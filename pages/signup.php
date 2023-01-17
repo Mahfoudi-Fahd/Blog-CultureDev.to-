@@ -1,3 +1,24 @@
+<?php
+require '../controllers/functions.php';
+
+$register= new Register();
+
+if(isset($_POST["submit"])){
+  $result = $register->registration($_POST["username"],$_POST["email"],$_POST["password"],$_POST["confirm"]);
+  if($result == 1){
+    echo "success";
+  }
+  elseif($result == 10){
+    echo "alrady taken";
+  }
+  elseif($result == 100){
+    echo "passwords does not match";
+  }
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +38,27 @@
         <a href="signin.html" class="btn btn-primary d-flex justify-content-center">Signin</a>
         </section>
     <section class="container form col-md-4">
-        <form>
+        <form method="POST" action="">
             <div class="mb-3">
                 <label for="User" class="form-label">Username</label>
-                <input  class="form-control" id="User" >
+                <input name="username" class="form-control" id="User" >
               </div>
             <div class="mb-3">
               <label for="Email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="Email" >
+              <input type="email" name="email" class="form-control" id="Email" >
             </div>
             <div class="mb-3">
               <label for="Password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="Password">
+              <input type="password" name="password" class="form-control" id="Password">
             </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>     
+            <div class="mb-3">
+              <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+              <input type="password" name="confirm" class="form-control" id="ConfirmPassword">
+            </div>
+
             <div class="d-flex justify-content-center">
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" name="submit" class="btn btn-primary">Register</button>
                 </div>       
           </form>
     </section>
