@@ -1,4 +1,26 @@
+body {
+  background-image: url("https://wallpapercave.com/wp/wp10567491.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .form {
   margin-right: 10rem;
   margin-top: 13rem;
+}
+
+.welcome {
+  margin: 15rem auto;
+}
+.welcome h1 {
+  font-size: 45px;
+}
+
+.btn-primary {
+  margin: 30px 70px;
+  background-color: darkblue !important;
+  border: darkblue !important;
+}
+.btn-primary:hover {
+  background-color: #0d6efd !important;
 }/*# sourceMappingURL=style.css.map */
