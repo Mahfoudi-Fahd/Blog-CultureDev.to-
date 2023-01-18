@@ -14,7 +14,7 @@ if(isset($_POST["login"])){
   if($result == 1){
     $_SESSION["login"] = true;
     $_SESSION["id"] = $login->idUser();
-    header("Location: signup.php");
+    header("Location: signin.php");
   }
   elseif($result == 10){
     echo
@@ -23,6 +23,7 @@ if(isset($_POST["login"])){
   elseif($result == 100){
     echo
     "<script> alert('User Not Registered'); </script>";
+    header("Location: signup.php");
   }
 }
 

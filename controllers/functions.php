@@ -122,7 +122,7 @@ try{
   $query ="SELECT * FROM admin WHERE id = $id";
             $stm = $this->pdo->prepare($query);
             $stm->execute();
-            $result = $stm->fetchall(pdo::FETCH_ASSOC);
+            $result = $stm->fetch(pdo::FETCH_ASSOC);
             return $result;
 }
 catch(PDOException $e) {
