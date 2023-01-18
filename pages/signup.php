@@ -35,7 +35,7 @@ if(isset($_POST["submit"])){
     <section class="welcome ">
         <h1 class="d-flex justify-content-center">Welcome Back !</h1>
         <p>To keep connected with us please login with your personal info</p>
-        <a href="signin.html" class="btn btn-primary d-flex justify-content-center">Signin</a>
+        <a href="signin.php" class="btn btn-primary d-flex justify-content-center">Signin</a>
         </section>
     <section class="container form col-md-4">
         <form method="POST" action="">

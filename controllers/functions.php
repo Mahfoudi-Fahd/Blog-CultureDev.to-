@@ -1,95 +1,133 @@
 <?php
-session_start();
+// session_start();
+
+define('DB_USER','root');
+ define('DB_PASSWORD','');
+ define('DB_HOST','localhost');
+ define('DB_NAME','culturedev');
+ 
+ session_start();
+
+
 
 class Connection{
-  public $host = "localhost";
-  public $user = "root";
-  public $password = "";
-  public $db_name = "culturedev";
-  public $conn;
+    protected $pdo;
+    function __construct($user = DB_USER, $password = DB_PASSWORD, $host = DB_HOST, $dbname = DB_NAME)
+    {
+        /* Attempt MySQL server connection. Assuming you are running MySQL
+        server with default setting (user 'root' with no password) */
+        try {
+            $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
 
-  public function __construct(){
-    $this->conn = mysqli_connect($this->host, $this->user, $this->password, $this->db_name);
-  }
+
+        } catch (PDOException $e) {
+            die("ERROR: Could not connect. " . $e->getMessage());
+        }
+    }
+
+    function getDb(){
+        return $this->pdo;
+    }
+
+    function __destruct()
+    {
+        if ($this->pdo !== null) {$this->pdo = null;} //return false to close the connection
+    }
 }
+
+
+// class Connection{
+//   public $host = "localhost";
+//   public $user = "root";
+//   public $password = "";
+//   public $db_name = "culturedev";
+//   public $conn;
+
+//   public function __construct(){
+//     $this->conn = mysqli_connect($this->host, $this->user, $this->password, $this->db_name);
+//   }
+// }
 
 class Register extends Connection{
 
   public function registration($username, $email, $password, $confirmpassword){
     try {
-        // $image = insertImage($_FILES['file']);
-        // $first_team_id  = $_POST['username'];
-        // $second_team_id = $_POST['email'];
-        // $date           = $_POST['password'];
-        // $stadium_id     = $_POST['stadium'];
+        // $duplicate = $this->pdo->prepare("SELECT * FROM admin WHERE username = '$username' OR email = '$email'");
+        // $duplicate->execute();
+        // $result = $duplicate->fetchAll();
+        // return $result;
+
+        // if(isset($result)) {
+        //     return 10;
+        // }
+        // else {
+            
         if($password == $confirmpassword){
-          $stm = $this->conn->prepare("INSERT INTO admin(username,email , password ) VALUES(?,?,?)");
+          $stm = $this->pdo->prepare("INSERT INTO admin(username,email , password ) VALUES(?,?,?)");
           $stm->execute([$username,$email,$password]);
           return 1;
-          //       // Registration successful
+              // Registration successful
               }
               else{
                 return 100;
-                // Password does not match
+              // Password does not match
               }
-        
-    } catch (PDOException $e) {
+            }
+        // }
+     catch (PDOException $e) {
         "Erreur" . $e->getMessage();
     }
   }
   
-  // public function registration($username, $email, $password, $confirmpassword){
-  //   $duplicate = mysqli_query($this->conn, "SELECT * FROM admin WHERE username = '$username' OR email = '$email'");
-  //   if(mysqli_num_rows($duplicate) > 0){
-  //     return 10;
-  //     // Username or email has already taken
-  //   }
-  //   else{
-  //     if($password == $confirmpassword){
-  //       $query = "INSERT INTO admin VALUES('$username', '$email', '$password')";
-  //       mysqli_query($this->conn, $query);
-  //       return 1;
-  //       // Registration successful
-  //     }
-  //     else{
-  //       return 100;
-  //       // Password does not match
-  //     }
-  //   }
-  // }
 }
 
-// class Login extends Connection{
-//   public $id;
-//   public function login($usernameemail, $password){
-//     $result = mysqli_query($this->conn, "SELECT * FROM tb_user WHERE username = '$usernameemail' OR email = '$usernameemail'");
-//     $row = mysqli_fetch_assoc($result);
 
-//     if(mysqli_num_rows($result) > 0){
-//       if($password == $row["password"]){
-//         $this->id = $row["id"];
-//         return 1;
-//         // Login successful
-//       }
-//       else{
-//         return 10;
-//         // Wrong password
-//       }
-//     }
-//     else{
-//       return 100;
-//       // User not registered
-//     }
-//   }
+class Login extends Connection{
+  public $id;
+  public function login($username, $password){
+    try {
+            $query =("SELECT * FROM admin WHERE username ='$username' LIMIT 1");
+            $stm = $this->pdo->prepare($query);
+            $stm->execute();
+            $result = $stm->fetch(pdo::FETCH_ASSOC);
+// var_dump($result);
+            if($password == $result["password"]){
+              $this->id = $result["id"];
+              return 1;
+              // Login successful
+            }
+            else{
+              return 10;
+              // Wrong password
+            }
 
-//   public function idUser(){
-//     return $this->id;
-//   }
-// }
+        } catch (PDOException $e) {
+            "Erreur" . $e->getMessage();
+        }
 
-// class Select extends Connection{
-//   public function selectUserById($id){
-//     $result = mysqli_query($this->conn, "SELECT * FROM tb_user WHERE id = $id");
-//     return mysqli_fetch_assoc($result);
-//   }
-// }
+    // else{
+    //   return 100;
+    //   // User not registered
+    // }
+  }
+  
+  public function idUser(){
+    return $this->id;
+  }
+}
+
+class Select extends Connection{
+  public function selectUserById($id){
+try{
+  $query ="SELECT * FROM admin WHERE id = $id";
+            $stm = $this->pdo->prepare($query);
+            $stm->execute();
+            $result = $stm->fetchall(pdo::FETCH_ASSOC);
+            return $result;
+}
+catch(PDOException $e) {
+  "Erreur" . $e->getMessage();
+}
+
+}
+}
