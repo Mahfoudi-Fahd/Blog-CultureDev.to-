@@ -23,3 +23,30 @@ background-size: cover;
         background-color: #0d6efd !important;
     }
 }
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    transition: left 0.3s ease-out;
+  
+    &.open {
+      left: 0;
+    }
+  
+    nav {
+      padding: 20px;
+    }
+  
+    @media (max-width: 768px) {
+      width: 100%;
+      left: -100%;
+  
+      &.open {
+        left: 0;
+      }
+    }
+  }

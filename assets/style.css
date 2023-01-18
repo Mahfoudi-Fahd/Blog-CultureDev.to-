@@ -23,4 +23,20 @@ body {
 }
 .btn-primary:hover {
   background-color: #0d6efd !important;
+}
+
+.cd-side-nav {
+  position: absolute;
+  z-index: var(--zindex-header);
+  left: 0;
+  top: var(--cd-header-height);
+  width: var(--cd-sidebar-width);
+  transition: 0.2s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.cd-side-nav--is-visible {
+  opacity: 1;
+  visibility: visible;
 }/*# sourceMappingURL=style.css.map */
