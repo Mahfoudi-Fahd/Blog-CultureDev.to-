@@ -13,48 +13,118 @@ else{
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>dashboard</title>
-    
+<head>
+    <meta charset="UTF-8">
+    <title> dashboard </title>
     <link rel="stylesheet" href="../assets/style.css">
-    <script src="../assets/js/main.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
-  <body>
-    <!-- <h1>Welcome <?php echo $user["username"]; ?></h1>
-    <a href="logout.php">Logout</a> -->
     
-    <!-- sidebar -->
-    <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 
-<!-- Use any element to open the sidenav -->
-<span onclick="openNav()">open</span>
 
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-<div id="main">
-<h1>Welcome <?php echo $user["username"]; ?></h1>
-    <a href="logout.php">Logout</a>
-</div>
 
-</div>
+  <body>
+    
+<!-- sidebar -->
+    <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus icon'></i>
+        <div class="logo_name">CultureDev</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+    <ul class="nav-list">
+    
+      <li>
+        <a href="dashboard.php">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+         <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+       <a href="#">
+         <i class='bx bx-user' ></i>
+         <span class="links_name">User</span>
+       </a>
+       <span class="tooltip">User</span>
+     </li>
+  
+     <li>
+       <a href="statistics.php">
+         <i class='bx bx-pie-chart-alt-2' ></i>
+         <span class="links_name">Analytics</span>
+       </a>
+       <span class="tooltip">Analytics</span>
+     </li>
+    
+     
+   
+     <li>
+       <a href="#">
+         <i class='bx bx-cog' ></i>
+         <span class="links_name">Setting</span>
+       </a>
+       <span class="tooltip">Setting</span>
+     </li>
+     <li class="profile">
+         <div class="profile-details">
+           <img src="../assets/img/379-1662715378.jfif" alt="profileImg">
+           <div class="name_job">
+             <div class="name"><?php echo $user["username"]; ?></div>
+             
+           </div>
+         </div>
+         <a href="logout.php"><i class='bx bx-log-out' id="log_out" ></i></a>
+         
+     </li>
+    </ul>
+  </div>
+  <section class="home-section">
+      <div class="text">Dashboard</div>
+      
+      <div class="main-body">
+      <div class="promo_card">
+        <h1>Welcome <?php echo $user["username"]; ?> to CultureDev.to™</h1>
+        <span>CultureDev.to™ est un système de gestion d'articles qui sont liés au développement d'applications Web et mobiles en ligne.</span>
+        
+      </div>
 
-<!-- cards -->
-
-    <!-- <div class="card" style="width:18rem;">
-        <div class="card-body">
-            <h5 class="card-title">nombre d'articles</h5>
-
+      <div class="history_lists">
+        <div class="list1">
+          <div class="row">
+            <h4>Articles</h4>
+            <!-- <a href="#">See all</a> -->
+          </div>
+          <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>title</th>
+                <th>description</th>
+                <th>image</th>
+                <th>category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>2, Aug, 2022</td>
+                <td>Sam Tonny</td>
+                <td>Premimum</td>
+                <td>AI</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
         </div>
 
-    </div> -->
-  
+      
+  </section>
 
+  <script src="../assets/js/main.js"></script>
   </body>
 </html>
