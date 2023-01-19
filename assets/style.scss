@@ -1,7 +1,7 @@
 body{
-    background-image: url("https://wallpapercave.com/wp/wp10567491.jpg");
-background-repeat: no-repeat;
-background-size: cover;
+//     background-image: url("https://wallpapercave.com/wp/wp10567491.jpg");
+// background-repeat: no-repeat;
+// background-size: cover;
 }
 .form{
     margin-right: 10rem;
@@ -29,7 +29,7 @@ background-size: cover;
 
 
 .main-body{
-  width: 70%;
+  width: 100%;
   padding: 1rem;
   @media screen and (max-width: 725px){
 
@@ -39,7 +39,6 @@ background-size: cover;
 }
 .promo_card{
   
-  width: 100%;
   color: #fff;
   margin: 0 10rem;
   border-radius: 8px;
@@ -62,40 +61,48 @@ background-size: cover;
 
 }
 
-.row{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3rem 10rem;
-}
-table{
+// .row{
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin: 3rem 10rem;
+// }
+// table{
   
  
-  background: #fff;
-  padding-left: 10rem;
-  text-align: center;
-  // border-radius: 10px;
-  td, th{
-    padding: 0.2rem 0.8rem;
-  }
-  th{
-    font-size: 15px;
-  }
-  td{
-    font-size: 13px;
-    color: rgb(100, 100, 100);
-  }
-  @media screen and (max-width: 725px){
+//   background: #fff;
+//   padding-left: 10rem;
+//   text-align: center;
+//   // border-radius: 10px;
+//   td, th{
+//     padding: 0.2rem 0.8rem;
+//   }
+//   th{
+//     font-size: 15px;
+//   }
+//   td{
+//     font-size: 13px;
+//     color: rgb(100, 100, 100);
+//   }
+//   @media screen and (max-width: 725px){
 
-    padding: 0 1rem;
-  }
-  @media screen and (max-width: 600px){
+//     padding: 0 1rem;
+//   }
+//   @media screen and (max-width: 600px){
    
-    margin-bottom: 30px;
-    padding: 0 1rem;
-  }
+//     margin-bottom: 30px;
+//     padding: 0 1rem;
+//   }
   
 
+// }
+
+.table-container{
+  display: flex;
+  
+  @media screen and (max-width: 600px){
+    overflow-x:auto;
+      }
 }
 
 
@@ -130,6 +137,7 @@ table{
   transition: all 0.5s ease;
 }
 .sidebar.open{
+
   width: 250px;
 }
 .sidebar .logo-details{
@@ -179,8 +187,10 @@ table{
 .sidebar .nav-list{
   margin-top: 20px;
   height: 100%;
+  padding: 0;
 }
 .sidebar li{
+  
   position: relative;
   margin: 8px 0;
   list-style: none;
@@ -228,23 +238,8 @@ table{
   padding: 0 20px 0 50px;
   width: 100%;
 }
-.sidebar .bx-search{
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  font-size: 22px;
-  background: #1d1b31;
-  color: #FFF;
-}
-.sidebar.open .bx-search:hover{
-  background: #1d1b31;
-  color: #FFF;
-}
-.sidebar .bx-search:hover{
-  background: #FFF;
-  color: #11101d;
-}
+
+
 .sidebar li a{
   display: flex;
   height: 100%;
@@ -360,6 +355,7 @@ table{
     display: none;
   }
 }
+
 
 
 
