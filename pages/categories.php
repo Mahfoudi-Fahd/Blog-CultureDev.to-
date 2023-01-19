@@ -1,5 +1,18 @@
 
+<?php 
+    include '../controllers/crud.php';
+    if (isset($_POST['submit'])) {
+        $name = $_POST['name'];
 
+        // $date = date("Y-m-d h:i:s A");
+
+        $a = new database();
+        $a->insert('category',['name'=>$name ]);
+        if ($a == true) {
+            header('location:categories.php');
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -53,7 +66,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form>
+          <form method="POST" action="">
               <div class="form-group">
     <label for="title"></label>
     <input class="form-control" name="name" id="name" placeholder="Category Name">
@@ -63,7 +76,7 @@
 </div>
 <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" name="submit" class="btn btn-primary">Save changes</button>
     </div>
     </div>
   </div>
