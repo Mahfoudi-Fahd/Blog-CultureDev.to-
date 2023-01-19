@@ -17,13 +17,18 @@
     <?php include '../includes/side.php';?>
 
 
-
         <section class="home-section">
-    <div class="text">Posts</div>
-      
+        <div class="d-flex justify-content-between align-items-center ">
+            <div class="text">Posts</div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Post
+            </button>
+    </div>
+            
     <div class="main-body"> 
         <div class="table-container">
-            <table class="table">
+            <table class="m-5 table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -41,41 +46,15 @@
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td ><i class='me-3 btn btn-secondary bx bx-edit-alt'></i><i class='btn btn-secondary bx bx-message-square-x'></i></td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>         
     </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+
 
   </section>
 <!-- Modal -->
@@ -83,11 +62,36 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Post</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+      <form>
+  <div class="form-group">
+    <label for="title"></label>
+    <input class="form-control" name="title" id="title" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <label for="category"></label>
+    <select class="form-control" name="category" id="category">
+      <option selected disabled >Choose Category</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  
+  <div class="mt-4 form-group">
+    <label for="image"></label>
+    <input type="file" class="form-control-file" id="image">
+  </div>
+
+  <div class="form-group">
+    <label for="description"></label>
+    <textarea class="form-control" id="description" name="description" placeholder="Description" rows="3"></textarea>
+  </div>
+</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -99,3 +103,4 @@
   <script src="../assets/js/main.js"></script>
             
         </body>
+        </html>

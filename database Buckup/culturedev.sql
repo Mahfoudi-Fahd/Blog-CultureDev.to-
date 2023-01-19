@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2023 at 12:19 PM
+-- Generation Time: Jan 19, 2023 at 03:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blog culturedev.to`
+-- Database: `culturedev`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,19 @@ CREATE TABLE `admin` (
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `email`, `password`) VALUES
+(21, 'hyxaqosijy', 'fesufilis@mailinator.com', 'Pa$$w0rd!'),
+(22, 'hucery', 'zajonofuta@mailinator.com', 'Pa$$w0rd!'),
+(23, 'cytyd', 'gapoj@mailinator.com', 'Pa$$w0rd!'),
+(24, 'cytyd', 'gapoj@mailinator.com', 'Pa$$w0rd!'),
+(25, 'nyruwa', 'caviraqy@mailinator.com', 'Pa$$w0rd!'),
+(26, 'nyruwa', 'caviraqy@mailinator.com', 'Pa$$w0rd!'),
+(27, 'fahd', 'fahd@gmail.com', '12345');
+
 -- --------------------------------------------------------
 
 --
@@ -42,7 +55,7 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `articles` (
   `id` int(225) NOT NULL,
-  `title` varchar(50) NOT NULL,
+  `title` varchar(225) NOT NULL,
   `description` text NOT NULL,
   `image` varchar(225) NOT NULL,
   `admin_id` int(225) NOT NULL,
@@ -92,7 +105,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(225) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `articles`
