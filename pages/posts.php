@@ -1,7 +1,9 @@
-
+<?php 
+    include '../controllers/crud.php';
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
+  <head>
 <meta charset="UTF-8">
 <title> dashboard </title>
 <link rel="stylesheet" href="../assets/style.css">
@@ -11,96 +13,102 @@
 
 
 
-  <body>
-    
-<!-- sidebar -->
+<body>
+  
+    <!-- sidebar -->
     <?php include '../includes/side.php';?>
 
-
-        <section class="home-section">
-        <div class="d-flex justify-content-between align-items-center ">
-            <div class="text">Posts</div>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Add Post
-            </button>
-    </div>
-            
-    <div class="main-body"> 
-        <div class="table-container">
-            <table class="m-5 table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td ><i class='me-3 btn btn-secondary bx bx-edit-alt'></i><i class='btn btn-secondary bx bx-message-square-x'></i></td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>         
-    </div>
-
-
-
-  </section>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Create Post</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form>
-  <div class="form-group">
-    <label for="title"></label>
-    <input class="form-control" name="title" id="title" placeholder="Title">
-  </div>
-  <div class="form-group">
-    <label for="category"></label>
-    <select class="form-control" name="category" id="category">
-      <option selected disabled >Choose Category</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
   
-  <div class="mt-4 form-group">
-    <label for="image"></label>
-    <input type="file" class="form-control-file" id="image">
-  </div>
+    <section class="home-section">
+          <div class="d-flex justify-content-between align-items-center ">
+            <div class="text">Posts</div>
+          </div>
+          <form  class="" action="insert_posts.php" method="post">
+            <div class="d-flex justify-content-between col-10 form-group">
+              <?php include 'form_posts.php'; ?>
+              <input type="submit" class="btn btn-primary" name="submit" value="Insert">
+            </div>
+          </form> 
+        <div class="main-body"> 
+          <div class="table-container">
+            <table class="m-5 table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php 
+                  $b = new database();
+                  $b->select("articles","*");
+                  $result = $b->sql;
+              ?>
+              <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                  <tr>
+                      <td><?php echo $row['id']; ?></td>
+                      <td><?php echo $row['title']; ?></td>
+                      <td><?php echo $row['description']; ?></td>
+                      <td><?php echo $row['image']; ?></td>
+                      <td><?php echo  'not done';?></td>
+                      
+                      <td>
+                          <a href="edit_posts.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
+                          <a href="" type="button"  data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-target="#myModal" id="delete" class="btn btn-danger">Delete</a>
+                      </td>
+                  </tr>
+              <?php } ?>
+              </tbody>
+            </table>
+          </div>  
+        </div>    
 
-  <div class="form-group">
-    <label for="description"></label>
-    <textarea class="form-control" id="description" name="description" placeholder="Description" rows="3"></textarea>
-  </div>
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-  <script src="../assets/js/main.js"></script>
-            
-        </body>
-        </html>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $(document).on('click',"#delete",function(e) {
+                e.preventDefault();
+                var del = $(this).data('id');
+
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url : "delete_post.php",
+                            type : "POST",
+                            data : {id:del},
+                            success : function() {
+                                swal({
+                                    title: "Sweet!",
+                                    text: "Delete data",
+                                    imageUrl: 'thumbs-up.jpg'
+                                }); 
+                            }
+                        });
+                        swal("Poof! Your imaginary file has been deleted!", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+            });
+        });
+    </script>
+    </section>
+      <script src="../assets/js/main.js"></script>      
+</body>
+</html>

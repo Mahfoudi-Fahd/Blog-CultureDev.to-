@@ -1,18 +1,6 @@
 
 <?php 
     include '../controllers/crud.php';
-    if (isset($_POST['save'])) {
-        
-        $name = $_POST['name'];
-
-        $date = date("Y-m-d h:i:s A");
-
-        $a = new database();
-        $a->insert('category',['name'=>$name,'date'=>$date]);
-        if ($a == true) {
-            header('location:categories.php');
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -71,10 +59,8 @@
                                             <td><?php echo $row['date']; ?></td>
                                             
                                             <td>
-                                                <a href="edit.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
-                                            </td>
-                                            <td>
-                                                <a href="" type="button"  data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-target="#myModal" id="del" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="edit_posts.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
+                                                <a href="" type="button"  data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-target="#myModal" id="del" class="btn btn-danger ">Delete</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
