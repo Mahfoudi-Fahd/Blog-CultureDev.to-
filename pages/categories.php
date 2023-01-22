@@ -14,7 +14,8 @@
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+
 </head>
  <body>
 <?php include '../includes/side.php'?>
@@ -37,13 +38,13 @@
                             </form>
                         </div>
                         <div class="col-md-12 p-0">
-                            <table class="table">
+                            <table id="category_table" class="table">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Id</th>
                                         <th scope="col">Category Name</th>
                                         <th scope="col">Created on</th>
-                                        <th scope="col" colspan="3">Action</th>
+                                        <th scope="col" >Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,7 +58,6 @@
                                             <td><?php echo $row['id']; ?></td>
                                             <td><?php echo $row['name']; ?></td>
                                             <td><?php echo $row['date']; ?></td>
-                                            
                                             <td>
                                                 <a href="edit_posts.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
                                                 <a href="" type="button"  data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-target="#myModal" id="del" class="btn btn-danger ">Delete</a>
@@ -118,6 +118,23 @@
 
 </section> 
 
-                
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+         <script>
+          $(document).ready(function () {
+    $('#category_table').DataTable({
+      "pagingType":"full_numbers",
+      "lengthMenu":[
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"]
+    ],
+    responsive:true,
+    language:{
+      search: "_INPUT_",
+      searchPlaceholder:"Search Articles",
+    }
+    });
+});
+         </script>     
 </body>
 </html>

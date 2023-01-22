@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="../assets/style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>   
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
 </head>
 
 
@@ -31,7 +32,7 @@
           </form> 
         <div class="main-body"> 
           <div class="table-container">
-            <table class="m-5 table">
+            <table id="table" class="m-5 table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -109,6 +110,24 @@
         });
     </script>
     </section>
-      <script src="../assets/js/main.js"></script>      
+      <script src="../assets/js/main.js"></script>   
+         <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+         <script>
+          $(document).ready(function () {
+    $('#table').DataTable({
+      "pagingType":"full_numbers",
+      "lengthMenu":[
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"]
+    ],
+    responsive:true,
+    language:{
+      search: "_INPUT_",
+      searchPlaceholder:"Search Articles",
+    }
+    });
+});
+         </script>
 </body>
 </html>
