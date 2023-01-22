@@ -1,9 +1,9 @@
-<?php
-class database{
+<?php 
+    class database{
         public $que;
         private $servername='localhost';
         private $username='root';
-        private $password='root';
+        private $password='';
         private $dbname='culturedev';
         private $result=array();
         private $mysqli='';
