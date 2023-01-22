@@ -9,10 +9,13 @@ if(isset($_POST["submit"])){
     echo "success";
   }
   elseif($result == 10){
-    echo "alrady taken";
+
+    echo
+    "<script> alert('Alrady taken'); </script>";
   }
   elseif($result == 100){
-    echo "passwords does not match";
+    echo
+    "<script> alert('passwords does not match'); </script>";
   }
 }
 
