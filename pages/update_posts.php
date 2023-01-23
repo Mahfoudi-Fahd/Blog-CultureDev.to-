@@ -2,6 +2,7 @@
     include '../controllers/crud.php';
 
     if (isset($_POST['submit'])) {
+        // var_dump($_POST);
         $id = $_POST['id'];
         $title = $_POST['title'];
         $description = $_POST['description'];
@@ -16,7 +17,7 @@
         // $date = date("Y-m-d h:i:s A");
 
         $a = new database();
-        $a->update('articles',['title'=>$title,'description'=>$description,'image'=>$image,'category'=>$category],"id='$id'");
+        $a->update('articles',['title'=>$title,'description'=>$description,'image'=>$image,'category_id'=>$category],"id='$id'");
         if ($a == true) {
             header('location:posts.php');
         }
