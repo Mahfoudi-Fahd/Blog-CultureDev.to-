@@ -23,9 +23,26 @@
             
     </div>
             
-    <div class="main-body"> 
-        
-     </div>
+<div class="main-body d-flex justify-content-evenly"> 
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="d-flex justify-content-center card-title">Toltal Posts</h5>
+        <p class="d-flex justify-content-center card-text">0</p>
+      </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class=" d-flex justify-content-center card-title">Toltal Categories</h5>
+        <p class="d-flex justify-content-center card-text">0</p>
+      </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+      <div class=" card-body">
+        <h5 class="card-title d-flex justify-content-center">Toltal Developpers</h5>
+        <p class="d-flex justify-content-center card-text">0</p>
+      </div>
+  </div>
+</div>
 
 
 
