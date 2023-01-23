@@ -72,11 +72,16 @@ if(isset($_POST["submit"])){
 function validateForm(e) {
     var username = document.getElementById("User").value;
     var email = document.getElementById("Email").value;
+    var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+
+
+
     if (username == "") {
       e.preventDefault();
         // alert("Name must be filled out");
         document.getElementById("User").style.borderColor = "red";
-        document.getElementById("username-error").innerHTML = "Enter Usename";
+        document.getElementById("username-error").innerHTML = "Name must be filled out";
     }else{
       document.getElementById("username-error").innerHTML = "";
       document.getElementById("User").style.borderColor = "grey";
@@ -86,14 +91,25 @@ function validateForm(e) {
       e.preventDefault();
         // alert("Name must be filled out");
         document.getElementById("Email").style.borderColor = "red";
-        document.getElementById("email-error").innerHTML = "Enter Email";
+        document.getElementById("email-error").innerHTML = "Email must be filled out";
     }else{
       document.getElementById("Email").style.borderColor = "grey";
         document.getElementById("email-error").innerHTML = "";
     }
 
+    
+if(email.value.match(mailformat))
+{
+document.form1.text1.focus();
+return true;
+}
+else
+{
+alert("Invalid email address.");
+document.form1.text1.focus();
+return false;
 
-
+}
   }
 </script>
 </body>
