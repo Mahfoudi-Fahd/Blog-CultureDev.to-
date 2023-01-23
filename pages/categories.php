@@ -27,7 +27,7 @@
         </div> 
         <section id="content">
             <div class="content-wrap">
-                <div class="container  clearfix">
+                <div class="container clearfix">
                     <div class="row">
                         <div class="col-md-12" id="hide">
                             <form  class="" action="insert.php" method="post">

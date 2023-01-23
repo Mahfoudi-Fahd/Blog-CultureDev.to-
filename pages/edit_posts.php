@@ -26,7 +26,8 @@
                             $row = mysqli_fetch_assoc($result);
                         ?>
                         <div class="col-md-12" id="hide">
-                            <form  class="row form " action="update_posts.php" method="post">
+
+                            <form  class="row form " action="update_posts.php" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                                 <?php include 'form_posts.php'; ?>
                                 <div class="col-12 form-group">
