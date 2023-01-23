@@ -41,14 +41,16 @@ if(isset($_POST["submit"])){
         <a href="signin.php" class="btn btn-primary d-flex justify-content-center">Signin</a>
         </section>
     <section class="container form col-md-4">
-        <form method="POST" action="">
+        <form method="POST" action="" onsubmit="return validateForm(event)">
             <div class="mb-3">
                 <label for="User" class="form-label">Username</label>
                 <input name="username" class="form-control" id="User" >
+                <div id="username-error" class="text-danger"></div>
               </div>
             <div class="mb-3">
               <label for="Email" class="form-label">Email address</label>
               <input type="email" name="email" class="form-control" id="Email" >
+              <div id="email-error" class="text-danger"></div>
             </div>
             <div class="mb-3">
               <label for="Password" class="form-label">Password</label>
@@ -61,10 +63,37 @@ if(isset($_POST["submit"])){
 
             <div class="d-flex justify-content-center">
 
-                <button type="submit" name="submit" class="btn btn-primary">Register</button>
+                <button type="submit" name="submit"  class="btn btn-primary">Register</button>
                 </div>       
           </form>
     </section>
 </div>
+<script>
+function validateForm(e) {
+    var username = document.getElementById("User").value;
+    var email = document.getElementById("Email").value;
+    if (username == "") {
+      e.preventDefault();
+        // alert("Name must be filled out");
+        document.getElementById("User").style.borderColor = "red";
+        document.getElementById("username-error").innerHTML = "waaaa";
+    }else{
+      document.getElementById("username-error").innerHTML = "";
+      document.getElementById("User").style.border = "none";
+    }
+    
+    if (email == "") {
+      e.preventDefault();
+        // alert("Name must be filled out");
+        document.getElementById("Email").style.borderColor = "red";
+        document.getElementById("email-error").innerHTML = "waaaa";
+    }else{
+
+    }
+
+
+
+  }
+</script>
 </body>
 </html>
