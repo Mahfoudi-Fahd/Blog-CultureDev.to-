@@ -27,17 +27,17 @@
         </div> 
         <section id="content">
             <div class="content-wrap">
-                <div class="container clearfix">
+                <div class="container  clearfix">
                     <div class="row">
                         <div class="col-md-12" id="hide">
                             <form  class="" action="insert.php" method="post">
-                                <div class="d-flex justify-content-between col-12 form-group">
+                                <div class=" d-flex  flex-column flex-lg-row flex-md-row col-12 form-group">
                                     <?php include 'form.php'; ?>
                                     <input type="submit" class="btn btn-primary" name="submit" value="Insert">
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-12 p-0">
+                        <div class="table-container col-md-12 p-0">
                             <table id="category_table" class="table">
                                 <thead class="thead-dark">
                                     <tr>
@@ -59,7 +59,7 @@
                                             <td><?php echo $row['name']; ?></td>
                                             <td><?php echo $row['date']; ?></td>
                                             <td>
-                                                <a href="edit_posts.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
+                                                <a href="edit.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
                                                 <a href="" type="button"  data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-target="#myModal" id="del" class="btn btn-danger ">Delete</a>
                                             </td>
                                         </tr>
@@ -119,7 +119,7 @@
 </section> 
 
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-         <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
          <script>
           $(document).ready(function () {
     $('#category_table').DataTable({

@@ -23,15 +23,15 @@
                             $b = new database();
                             $b->select("articles","*","id='$id'");
                             $result = $b->sql;
-
                             $row = mysqli_fetch_assoc($result);
                         ?>
                         <div class="col-md-12" id="hide">
-                            <form  class="row form" action="update_posts.php" method="post">
+                            <form  class="row form " action="update_posts.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                                 <?php include 'form_posts.php'; ?>
                                 <div class="col-12 form-group">
                                     <input type="submit" class="btn btn-primary" name="submit" value="Update">
+                                    <a class="btn btn-secondary" href="posts.php">Close</a>
                                 </div>
                             </form>
                         </div>
