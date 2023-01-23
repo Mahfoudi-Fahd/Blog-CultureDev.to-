@@ -76,19 +76,20 @@ function validateForm(e) {
       e.preventDefault();
         // alert("Name must be filled out");
         document.getElementById("User").style.borderColor = "red";
-        document.getElementById("username-error").innerHTML = "waaaa";
+        document.getElementById("username-error").innerHTML = "Enter Usename";
     }else{
       document.getElementById("username-error").innerHTML = "";
-      document.getElementById("User").style.border = "none";
+      document.getElementById("User").style.borderColor = "grey";
     }
-    
+
     if (email == "") {
       e.preventDefault();
         // alert("Name must be filled out");
         document.getElementById("Email").style.borderColor = "red";
-        document.getElementById("email-error").innerHTML = "waaaa";
+        document.getElementById("email-error").innerHTML = "Enter Email";
     }else{
-
+      document.getElementById("Email").style.borderColor = "grey";
+        document.getElementById("email-error").innerHTML = "";
     }
 
 
