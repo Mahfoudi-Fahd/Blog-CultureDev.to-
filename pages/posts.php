@@ -36,7 +36,6 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Image</th>
                   <th scope="col">Title</th>
                   <th scope="col">Description</th>
                   <th scope="col">Category</th>
@@ -53,7 +52,6 @@
               <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                   <tr>
                     <td><?php echo $row['id']; ?></td>
-                    <td><img src="../assets/img/<?php echo $row['image'] ?>" class="ms-3 rounded " alt="Post Image" height="100" width="200"></td>
                       <td><?php echo $row['title']; ?></td>
                       <td><?php echo $row['description']; ?></td>
                       <td><?php echo  $row['name'];?></td>

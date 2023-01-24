@@ -13,11 +13,9 @@ class Register extends Connection{
         $duplicate->execute();
         $result = $duplicate->fetchAll();
         // return $result;
-
-        if(isset($result)) {
+// die(var_dump($result));
+        if(!empty($result)) {
             return 10;
-            // echo "deja crea...";
-            // $session['meesage'] = "certre";
         }
         else {
             

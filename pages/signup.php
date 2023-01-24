@@ -49,16 +49,16 @@ if(isset($_POST["submit"])){
               </div>
             <div class="mb-3">
               <label for="Email" class="form-label">Email address</label>
-              <input type="email" name="email" class="form-control" id="Email" >
+              <input type="" name="email" class="form-control" id="Email" >
               <div id="email-error" class="text-danger"></div>
             </div>
             <div class="mb-3">
-              <label for="Password" class="form-label">Password</label>
-              <input type="password" name="password" class="form-control" id="Password">
+              <label for="Password" class="form-label" >Password</label>
+              <input type="password" name="password" class="form-control" id="Password" required>
             </div>
             <div class="mb-3">
               <label for="ConfirmPassword" class="form-label">Confirm Password</label>
-              <input type="password" name="confirm" class="form-control" id="ConfirmPassword">
+              <input type="password" name="confirm" class="form-control" id="ConfirmPassword" required>
             </div>
 
             <div class="d-flex justify-content-center">
@@ -69,48 +69,51 @@ if(isset($_POST["submit"])){
     </section>
 </div>
 <script>
-function validateForm(e) {
-    var username = document.getElementById("User").value;
-    var email = document.getElementById("Email").value;
-    var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+// function validateForm(e) {
+//     var username = document.getElementById("User").value;
+//     var email = document.getElementById("Email").value;
+//     // var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
 
+//     function isValidEmail(email){
+//     let pattern =/^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/ ;
+//     return pattern.test(email.value);
+// }
 
+//     if (username == "") {
+//       e.preventDefault();
+//         // alert("Name must be filled out");
+//         document.getElementById("User").style.borderColor = "red";
+//         document.getElementById("username-error").innerHTML = "Name must be filled out";
+//     }else{
+//       document.getElementById("username-error").innerHTML = "";
+//       document.getElementById("User").style.borderColor = "grey";
+//     }
 
-    if (username == "") {
-      e.preventDefault();
-        // alert("Name must be filled out");
-        document.getElementById("User").style.borderColor = "red";
-        document.getElementById("username-error").innerHTML = "Name must be filled out";
-    }else{
-      document.getElementById("username-error").innerHTML = "";
-      document.getElementById("User").style.borderColor = "grey";
-    }
+//     if (email == "") {
+//       e.preventDefault();
+//         // alert("Name must be filled out");
+//         document.getElementById("Email").style.borderColor = "red";
+//         document.getElementById("email-error").innerHTML = "Email must be filled out";
+//     }else{
+//       if (!isValidEmail(email)) {
+//         document.getElementById("Email").style.borderColor = "red";
+//         document.getElementById("email-error").innerHTML = "Email invalid";
+//               }else{
+//                 document.getElementById("Email").style.borderColor = "green";
+//         document.getElementById("email-error").innerHTML = "";
+//               }
+//       // if(email.value.match(mailformat)){
+        
+//       // }else{
 
-    if (email == "") {
-      e.preventDefault();
-        // alert("Name must be filled out");
-        document.getElementById("Email").style.borderColor = "red";
-        document.getElementById("email-error").innerHTML = "Email must be filled out";
-    }else{
-      document.getElementById("Email").style.borderColor = "grey";
-        document.getElementById("email-error").innerHTML = "";
-    }
+//       //   document.getElementById("Email").style.borderColor = "red";
+//       //   document.getElementById("email-error").innerHTML = "Email invalid";
+//       // }
+//        }
 
     
-if(email.value.match(mailformat))
-{
-document.form1.text1.focus();
-return true;
-}
-else
-{
-alert("Invalid email address.");
-document.form1.text1.focus();
-return false;
-
-}
-  }
+//   }
 </script>
 </body>
 </html>
