@@ -60,7 +60,7 @@
                                             <td><?php echo $row['date']; ?></td>
                                             <td>
                                                 <a href="edit.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-secondary ">Edit</a>
-                                                <a href="" type="button"  data-toggle="modal" data-id="<?php echo $row['id']; ?>" data-target="#myModal" id="del" class="btn btn-danger ">Delete</a>
+                                                <a href="delete_data.php?id=<?php echo $row['id']; ?>" type="button" class="btn btn-danger ">Delete</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -72,52 +72,8 @@
             </div>
         </section>
 
-
-
-
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function(){
-            $(document).on('click',"#del",function(e) {
-                e.preventDefault();
-                var del = $(this).data('id');
-
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            url : "delete_data.php",
-                            type : "POST",
-                            data : {id:del},
-                            success : function() {
-                                swal({
-                                    title: "Sweet!",
-                                    text: "Delete data",
-                                    imageUrl: 'thumbs-up.jpg'
-                                }); 
-                            }
-                        });
-                        swal("Poof! Your imaginary file has been deleted!", {
-                            icon: "success",
-                        });
-                    } else {
-                        swal("Your imaginary file is safe!");
-                    }
-                });
-            });
-        });
-    </script>
-
 </section> 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
          <script>

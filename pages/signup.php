@@ -41,20 +41,21 @@ if(isset($_POST["submit"])){
         <a href="signin.php" class="btn btn-primary d-flex justify-content-center">Signin</a>
         </section>
     <section class="container form col-md-4">
-        <form method="POST" action="" onsubmit="return validateForm(event)">
+        <form method="POST" action="">
             <div class="mb-3">
                 <label for="User" class="form-label">Username</label>
-                <input name="username" class="form-control" id="User" >
+                <input name="username" class="form-control" oninput="validateUsername()" id="User" >
                 <div id="username-error" class="text-danger"></div>
               </div>
             <div class="mb-3">
               <label for="Email" class="form-label">Email address</label>
-              <input type="" name="email" class="form-control" id="Email" >
+              <input type="" name="email" class="form-control" oninput="validateEmail()" id="Email" >
               <div id="email-error" class="text-danger"></div>
             </div>
             <div class="mb-3">
               <label for="Password" class="form-label" >Password</label>
-              <input type="password" name="password" class="form-control" id="Password" required>
+              <input type="password" name="password" class="form-control" id="Password" oninput="validatePassword()" required>
+              <div id="password-error"></div>
             </div>
             <div class="mb-3">
               <label for="ConfirmPassword" class="form-label">Confirm Password</label>
@@ -63,57 +64,58 @@ if(isset($_POST["submit"])){
 
             <div class="d-flex justify-content-center">
 
-                <button type="submit" name="submit"  class="btn btn-primary">Register</button>
+                <button type="submit" name="submit" id="signup"  class="btn btn-primary">Register</button>
                 </div>       
           </form>
     </section>
 </div>
+
+
+<!-- FORM VALIDATION -->
 <script>
-// function validateForm(e) {
-//     var username = document.getElementById("User").value;
-//     var email = document.getElementById("Email").value;
-//     // var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-
-
-//     function isValidEmail(email){
-//     let pattern =/^(([^<>()[]\.,;:\s@"]+(.[^<>()[]\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/ ;
-//     return pattern.test(email.value);
-// }
-
-//     if (username == "") {
-//       e.preventDefault();
-//         // alert("Name must be filled out");
-//         document.getElementById("User").style.borderColor = "red";
-//         document.getElementById("username-error").innerHTML = "Name must be filled out";
-//     }else{
-//       document.getElementById("username-error").innerHTML = "";
-//       document.getElementById("User").style.borderColor = "grey";
-//     }
-
-//     if (email == "") {
-//       e.preventDefault();
-//         // alert("Name must be filled out");
-//         document.getElementById("Email").style.borderColor = "red";
-//         document.getElementById("email-error").innerHTML = "Email must be filled out";
-//     }else{
-//       if (!isValidEmail(email)) {
-//         document.getElementById("Email").style.borderColor = "red";
-//         document.getElementById("email-error").innerHTML = "Email invalid";
-//               }else{
-//                 document.getElementById("Email").style.borderColor = "green";
-//         document.getElementById("email-error").innerHTML = "";
-//               }
-//       // if(email.value.match(mailformat)){
+function validateUsername() {
+    if (document.getElementById('User').value == '' || !/^[a-zA-Z]{5,}$/.test(document.getElementById('User').value)) {
+        document.getElementById('User').setAttribute('style', 'color:red; border: 1px red solid ;');
+  
+        document.getElementById('username-error').innerText = 'Please enter a valid Username! check that the Name contains at least 5 characters and without special characters!!';
+        document.getElementById('username-error').setAttribute('style', 'color:red;font-size:13px;');
+        // document.getElementById("signup").disabled = true;
+    } else {
+        document.getElementById('User').setAttribute('style', 'color:black; border: 1px #ced4da solid ;');
+        document.getElementById('username-error').innerText = '';
+        // document.getElementById("signup").disabled = false;
+    }
+}
+function validateEmail() {
+    if (document.getElementById('Email').value == '' || !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+.test(document.getElementById('Email').value)) {
+        document.getElementById('Email').setAttribute('style', 'color:red; border: 1px red solid ;');
+  
+        document.getElementById('email-error').innerText = 'Please enter a valid Email!';
+        document.getElementById('email-error').setAttribute('style', 'color:red;font-size:13px;');
         
-//       // }else{
+    } else {
+        document.getElementById('Email').setAttribute('style', 'color:black; border: 1px #ced4da solid ;');
+        document.getElementById('email-error').innerText = '';
+     
+    }
+}
+function validatePassword() {
+    if (document.getElementById('Password').value == '' || !/^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/
+    .test(document.getElementById('Password').value)) {
 
-//       //   document.getElementById("Email").style.borderColor = "red";
-//       //   document.getElementById("email-error").innerHTML = "Email invalid";
-//       // }
-//        }
-
-    
-//   }
+      document.getElementById('Password').setAttribute('style', 'color:red; border: 1px red solid ;');
+        document.getElementById('password-error').innerText = 'Please enter a valid Password!  At least one uppercase letter At least one special character , At least one number , At least one lowercase , letter Minimum length of 8 characters ';
+        document.getElementById('password-error').setAttribute('style', 'color:red;font-size:13px;');
+        // document.getElementById("save").disabled = true;
+        // document.getElementById("update").disabled = true;
+    } else {
+        document.getElementById('Password').setAttribute('style', 'color:black; border: 1px #ced4da solid ;');
+        document.getElementById('password-error').innerText = '';
+        // document.getElementById("save").disabled = false;
+        // document.getElementById("update").disabled = false;
+    }
+}
 </script>
 </body>
 </html>

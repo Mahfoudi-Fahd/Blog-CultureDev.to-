@@ -13,10 +13,11 @@
         <select name="category" id="category" class=" mt-4 form-select ">
             <option value="<?= $row['category_id'] ?>" disabled selected>Select Category</option>  
             <?php while ($option = mysqli_fetch_assoc($result)) { ?>
-                <option value="<?= $option['id'] ?>" <?php if($option['id'] == $row['category_id']){ echo "selected"; } ?>><?= $option['name'] ?></option>
+                <option value="<?= $option['id'] ?>" <?php if(isset($_GET['id'])){ if($option['id'] == $row['category_id']){ echo "selected"; } }?>><?= $option['name'] ?></option>
             <?php } ?>
         </select>
     </div>
+
 
 <div class="col-md-12">
     <label for="register-form-name"></label>

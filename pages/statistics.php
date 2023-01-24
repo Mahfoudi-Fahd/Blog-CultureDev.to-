@@ -1,4 +1,31 @@
+<?php
+include '../controllers/crud.php';
+$c = new database();
+                  $c->select("articles","*");
+                  $result = $c->sql;
+                  $array =[];
+                  while($row = mysqli_fetch_assoc($result)){
+                    array_push($array,$row);
+                };
+                // print_r($array);
 
+$d = new database();
+                $d->select("category","*");
+                $result = $d->sql;
+                $category =[];
+                while($row = mysqli_fetch_assoc($result)){
+                  array_push($category,$row);
+};
+
+
+$a = new database();
+                $a->select("admin","*");
+                $result = $a->sql;
+                $admin =[];
+                while($row = mysqli_fetch_assoc($result)){
+                  array_push($admin,$row);
+};
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -27,19 +54,22 @@
   <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="d-flex justify-content-center card-title">Toltal Posts</h5>
-        <p class="d-flex justify-content-center card-text">0</p>
+        <p class="d-flex justify-content-center card-text"><?php 
+        echo count($array); ?></p>
       </div>
   </div>
   <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class=" d-flex justify-content-center card-title">Toltal Categories</h5>
-        <p class="d-flex justify-content-center card-text">0</p>
+        <p class="d-flex justify-content-center card-text"><?php 
+        echo count($category); ?></p>
       </div>
   </div>
   <div class="card" style="width: 18rem;">
       <div class=" card-body">
         <h5 class="card-title d-flex justify-content-center">Toltal Developpers</h5>
-        <p class="d-flex justify-content-center card-text">0</p>
+        <p class="d-flex justify-content-center card-text"><?php 
+        echo count($admin); ?></p>
       </div>
   </div>
 </div>

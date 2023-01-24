@@ -12,14 +12,14 @@ class Register extends Connection{
         $duplicate = $this->pdo->prepare("SELECT * FROM admin WHERE username = '$username' OR email = '$email'");
         $duplicate->execute();
         $result = $duplicate->fetchAll();
-        // return $result;
-// die(var_dump($result));
+      
         if(!empty($result)) {
             return 10;
         }
         else {
             
         if($password == $confirmpassword){
+          // $password=md5($password);
           $stm = $this->pdo->prepare("INSERT INTO admin(username,email , password ) VALUES(?,?,?)");
           $stm->execute([$username,$email,$password]);
           return 1;
@@ -43,11 +43,13 @@ class Login extends Connection{
   public $id;
   public function login($username, $password){
     try {
+      
             $query =("SELECT * FROM admin WHERE username ='$username' LIMIT 1");
             $stm = $this->pdo->prepare($query);
             $stm->execute();
             $result = $stm->fetch(pdo::FETCH_ASSOC);
 // var_dump($result);
+
             if($password == $result["password"]){
               $this->id = $result["id"];
               return 1;

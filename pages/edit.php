@@ -27,7 +27,7 @@
                             $row = mysqli_fetch_assoc($result);
                         ?>
                         <div class="" id="hide">
-                            <form  class=" form" action="update.php" method="post">
+                            <form  class="form" action="update.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                                 <?php include 'form.php'; ?>
                                 <div class="col-12 form-group">
